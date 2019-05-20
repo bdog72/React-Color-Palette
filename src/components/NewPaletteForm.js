@@ -11,7 +11,6 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import Button from '@material-ui/core/Button';
 import DraggableColorList from './DraggableColorList';
 import { arrayMove } from 'react-sortable-hoc';
-
 import styles from '../styles/NewPaletteFormStyles';
 
 class NewPaletteForm extends Component {
@@ -61,11 +60,9 @@ class NewPaletteForm extends Component {
     const randomColor = allColors[rand];
     this.setState({ colors: [...this.state.colors, randomColor] });
   }
-
   handleSubmit(newPalette) {
     newPalette.id = newPalette.paletteName.toLowerCase().replace(/ /g, '-');
     newPalette.colors = this.state.colors;
-
     this.props.savePalette(newPalette);
     this.props.history.push('/');
   }
@@ -123,10 +120,10 @@ class NewPaletteForm extends Component {
               </Button>
               <Button
                 variant="contained"
+                className={classes.button}
                 color="primary"
                 onClick={this.addRandomColor}
                 disabled={paletteIsFull}
-                className={classes.button}
               >
                 Random Color
               </Button>

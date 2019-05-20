@@ -11,19 +11,14 @@ export default {
     }
   },
   root: {
-    // background:
-    //   'linear-gradient(to bottom, #1e5799 0%,#2989d8 50%,#207cca 51%,#7db9e8 100%)',
-    //
-    //
-    //
-    /* background by SVGBackgrounds.com */
-    backgroundColor: '#00b7ff',
-    backgroundImage: `url(${bg})`,
     height: '100vh',
     display: 'flex',
     alignItems: 'flex-start',
     justifyContent: 'center',
-    overFlow: 'scroll'
+    /* background by SVGBackgrounds.com */
+    backgroundColor: '##00b7ff',
+    backgroundImage: `url(${bg})`,
+    overflow: 'scroll'
   },
   heading: {
     fontSize: '2rem'
@@ -36,6 +31,9 @@ export default {
     flexWrap: 'wrap',
     [sizes.down('xl')]: {
       width: '80%'
+    },
+    [sizes.down('xs')]: {
+      width: '75%'
     }
   },
   nav: {
@@ -53,12 +51,13 @@ export default {
     width: '100%',
     display: 'grid',
     gridTemplateColumns: 'repeat(3, 30%)',
-    gridGap: '5%',
+    gridGap: '2.5rem',
     [sizes.down('md')]: {
-      gridTemplateColumns: 'repeat(2,50%)'
+      gridTemplateColumns: 'repeat(2, 50%)'
     },
     [sizes.down('xs')]: {
-      gridTemplateColumns: 'repeat(1,100%)'
+      gridTemplateColumns: 'repeat(1, 100%)',
+      gridGap: '1.4rem'
     }
   }
 };

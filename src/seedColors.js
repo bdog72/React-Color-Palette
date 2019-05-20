@@ -1,6 +1,6 @@
 export default [
   {
-    paletteName: 'Starter Colors',
+    paletteName: 'Bozo Starter Colors',
     id: 'starter-colors',
     emoji: '🍻',
     colors: [
@@ -8,8 +8,7 @@ export default [
       { name: 'pink', color: '#E91E63' },
       { name: 'purple', color: '#9C27B0' },
       { name: 'deeppurple', color: '#673AB7' },
-      { name: 'indigo', color: '#3F51B5' },
-      { name: 'blue', color: '#2196F3' }
+      { name: 'indigo', color: '#3F51B5' }
     ]
   },
   {

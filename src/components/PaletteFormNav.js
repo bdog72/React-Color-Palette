@@ -3,14 +3,15 @@ import { withStyles } from '@material-ui/core/styles';
 import PaletteMetaForm from './PaletteMetaForm';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
+// import MenuIcon from '@material-ui/icons/Menu';
+import AddToPhotosIcon from '@material-ui/icons/AddToPhotos';
+// import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import Button from '@material-ui/core/Button';
-
 import styles from '../styles/PaletteFormNavStyles';
 
 class PaletteFormNav extends Component {
@@ -27,15 +28,12 @@ class PaletteFormNav extends Component {
       [evt.target.name]: evt.target.value
     });
   }
-
   showForm() {
     this.setState({ formShowing: true });
   }
-
   hideForm() {
     this.setState({ formShowing: false });
   }
-
   render() {
     const { classes, open, palettes, handleSubmit } = this.props;
     // const { newPaletteName } = this.state;
@@ -58,7 +56,7 @@ class PaletteFormNav extends Component {
                 [classes.hide]: open
               })}
             >
-              <ChevronRightIcon fontSize="large" />
+              <AddToPhotosIcon />
             </IconButton>
             <Typography variant="h6" color="inherit" noWrap>
               Create A Palette

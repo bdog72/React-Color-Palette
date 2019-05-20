@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import MiniPalette from './MiniPalette';
 import Dialog from '@material-ui/core/Dialog';
-
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
@@ -27,47 +26,39 @@ class PaletteList extends Component {
     this.openDialog = this.openDialog.bind(this);
     this.closeDialog = this.closeDialog.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
+    this.goToPalette = this.goToPalette.bind(this);
   }
-
   openDialog(id) {
-    this.setState({
-      openDeleteDialog: true,
-      deletingId: id
-    });
+    this.setState({ openDeleteDialog: true, deletingId: id });
   }
-
   closeDialog() {
-    this.setState({
-      openDeleteDialog: false,
-      deletingId: ''
-    });
+    this.setState({ openDeleteDialog: false, deletingId: '' });
   }
-
   goToPalette(id) {
     this.props.history.push(`/palette/${id}`);
   }
-
   handleDelete() {
     this.props.deletePalette(this.state.deletingId);
     this.closeDialog();
   }
-
   render() {
-    const { palettes, classes, deletePalette } = this.props;
-    const { openDeleteDialog, deletingId } = this.state;
+    const { palettes, classes } = this.props;
+    const { openDeleteDialog } = this.state;
     return (
       <div className={classes.root}>
         <div className={classes.container}>
           <nav className={classes.nav}>
             <h1 className={classes.heading}>React Colors</h1>
-            <Link to="/palette/new">Create Palette</Link>
+            <Link to="/palette/new" style={{ fontWeight: 'bolder' }}>
+              Create Palette
+            </Link>
           </nav>
           <TransitionGroup className={classes.palettes}>
             {palettes.map(palette => (
               <CSSTransition key={palette.id} classNames="fade" timeout={500}>
                 <MiniPalette
                   {...palette}
-                  handleClick={() => this.goToPalette(palette.id)}
+                  goToPalette={this.goToPalette}
                   // handleDelete={deletePalette}
                   openDialog={this.openDialog}
                   key={palette.id}
@@ -78,13 +69,12 @@ class PaletteList extends Component {
           </TransitionGroup>
         </div>
         <Dialog
-          // open={this.state.openDeleteDialog}
           open={openDeleteDialog}
           aria-labelledby="delete-dialog-title"
           onClose={this.closeDialog}
         >
           <DialogTitle id="delete-dialog-title">
-            Delete This Palette
+            Delete This Palette?
           </DialogTitle>
           <List>
             <ListItem button onClick={this.handleDelete}>
